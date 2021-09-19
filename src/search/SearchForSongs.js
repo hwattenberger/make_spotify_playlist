@@ -5,7 +5,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import Track from "../tracks/Track";
 import { useState } from "react";
 
-const SearchForSongs = ({setCurrentPlayingSong}) => {
+const SearchForSongs = ({setCurrentPlayingSong, spotifyAccessToken}) => {
     const [searchedTracks, setSearchedTracks] = useState([]);
     const [trackSearch, setTrackSearch] = useState("");
     const [artistSearch, setArtistSearch] = useState("");
@@ -15,6 +15,8 @@ const SearchForSongs = ({setCurrentPlayingSong}) => {
     const getTracks = (e) => {
         e.preventDefault();
 
+
+        spotifyApi.setAccessToken(spotifyAccessToken);
         spotifyApi.searchTracks(trackSearch).then(function (data) {
             setSearchedTracks(data.tracks.items);
             setTrackSearch("");

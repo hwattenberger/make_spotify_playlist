@@ -32,6 +32,13 @@ const SpotifyPlayerContainer = (props) => {
                     autoPlay="true"
                     initialVolume=".5"
                     play={playerPlaying}
+                    showSaveIcon="true"
+                    styles={{
+                        bgColor: '#191414',
+                        color: 'white',
+                        trackNameColor: 'white',
+                        sliderHandleColor: '#1DB954'
+                    }}
                     />
             </div>
         );

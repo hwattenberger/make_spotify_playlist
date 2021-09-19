@@ -21,11 +21,11 @@ h2 {
 }
 
 #trackPlayingDiv {
-  position: fixed;
-  bottom: 0;
-  height: 10vh;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* height: 10vh; */
   background-color: #161515;
-  max-width: 900px;
+  max-width: 240px;
   margin-top: 10px;
   padding-top: 10px;
 }

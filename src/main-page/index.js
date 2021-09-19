@@ -29,6 +29,7 @@ function App() {
       
       const details = { time_range: "short_term"}
       spotifyApi.getMyTopTracks(details).then(function (data) {
+        console.log("hi", data.items)
         setTopTracks(data.items);
       },
       function (err) {
@@ -60,20 +61,23 @@ function App() {
           <div id="createNewPlaylist">
             <NewPlaylist accessToken={spotifyAccessToken} setCurrentPlayingSong={setCurrentPlayingSong} setRecommendedTracks={setRecommendedTracks}/>
           </div>
+          <div id="trackPlayingDiv">
+            <SpotifyPlayerContainer accessToken={spotifyAccessToken} currentPlayingSong={currentPlayingSong} setCurrentPlayingSong={setCurrentPlayingSong}/>
+          </div>
         </div>
         <div id="bodyDiv">
           <div id="usersCurrentPlaylist">
             <CurrentPlaylist trackList={topTracks} setCurrentPlayingSong={setCurrentPlayingSong}/>
           </div>
           <div id="searchForSongs">
-            <SearchForSongs setCurrentPlayingSong={setCurrentPlayingSong}/>
+            <SearchForSongs setCurrentPlayingSong={setCurrentPlayingSong} spotifyAccessToken={spotifyAccessToken}/>
           </div>
           <div id="recommendedPlaylist">
             {showRecommended()}
           </div>
-          <div id="trackPlayingDiv">
+          {/* <div id="trackPlayingDiv">
             <SpotifyPlayerContainer accessToken={spotifyAccessToken} currentPlayingSong={currentPlayingSong} setCurrentPlayingSong={setCurrentPlayingSong}/>
-          </div>
+          </div> */}
         </div>
       </div>
     );
