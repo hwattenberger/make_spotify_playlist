@@ -1,31 +1,71 @@
-div .trackDiv {
-    background-color: lightblue;
+.trackDiv {
+    background-color: #343a40;
+    color: #ced4da;
     margin: 5px;
     padding: 5px;
-    /* padding-left: 20px; */
     text-align: left;
     display: flex;
     cursor: pointer;
-}
-
-li {
-    /* list-style-type: none; */
-}
-
-ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+    width: 200px;
+    font-size: 12px;
+    border-radius: 5px;
 }
 
 .trackDiv img {
     max-width: 64px;
+    max-height: 64px;
+}
+
+.trackDiv div {
+    margin-left: 1px;
 }
 
 .trackDiv .trackName {
-    font-size: 20px;
+    font-size: 14px;
+    width: 138px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.trackDiv .artist {
+    width: 138px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .trackDivDetails {
     margin-left: 10px;
+}
+
+.selectedTrackDiv {
+    position: relative;
+}
+
+.trackDivDetails .icons {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    transition: color 4s;
+    transition: transform 4s;
+}
+
+.trackDivDetails span {
+    margin-left: 10px;
+}
+
+.trackDivDetails .deleteTrack:hover,
+.trackDivDetails .likeTrack:hover {
+    transform: translateY(-1px);
+    color: white;
+}
+
+.trackDivDetails .liked:hover {
+    color: #1DB954;
+}
+
+.trackDivDetails .liked {
+    color: #1DB954;
 }

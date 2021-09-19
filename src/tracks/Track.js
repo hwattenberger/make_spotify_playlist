@@ -6,7 +6,6 @@ const Track = ({track, setCurrentPlayingSong}) => {
     const dragStart = (e) => {
         e.dataTransfer.setData('object', JSON.stringify(track));
         e.dataTransfer.setData('uri', track.uri);
-        console.log("Drag Start", track);
     }
 
     const smallImageUrl = () => {
@@ -16,10 +15,10 @@ const Track = ({track, setCurrentPlayingSong}) => {
 
     return ( 
         <div className="trackDiv" onClick={() => setCurrentPlayingSong(track.uri)} onDragStart={dragStart} draggable>
-            <img src={smallImageUrl()}></img>
+            <img src={smallImageUrl()} alt="albumCover"></img>
             <div className="trackDivDetails">
-                <div className="trackName">{track.name}</div>
-                <div>{track.artists[0].name}</div>
+                <div className="trackName" title={track.name}>{track.name}</div>
+                <div className="artist">{track.artists[0].name}</div>
             </div>
         </div>
      );

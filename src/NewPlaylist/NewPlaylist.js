@@ -1,19 +1,21 @@
-import Track from "../tracks/Track";
+import SelectedTrack from "../tracks/SelectedTrack";
 import SpotifyWebApi from 'spotify-web-api-js';
+import Popup from './../Utilities/Popup';
 
-import { useEffect, useState } from "react";
-import { select } from "async";
+import { useState } from "react";
 
 const NewPlaylist = (props) => {
     const [selectedTracks, setSelectedTracks] = useState([]);
-
-    // useEffect(() => {
-
-    // }, [selectedTracks]);
+    const [errorMsg, setErrorMsg] = useState("");
 
     const onDrop = (e) => {
         const droppedTrack = JSON.parse(e.dataTransfer.getData('object'));
         
+        if(selectedTracks.length === 5) {
+            setErrorMsg("Can only have 5 tracks");
+            return;
+        }
+
         if(droppedTrack && !alreadyInArray(droppedTrack)) {
             setSelectedTracks([...selectedTracks, droppedTrack]);
         }
@@ -27,6 +29,7 @@ const NewPlaylist = (props) => {
                 return found;
             }
         })
+        if (found) setErrorMsg("Track already in list");
         return found;
     }
 
@@ -35,9 +38,7 @@ const NewPlaylist = (props) => {
     }
 
     const getRecommendations = () => {
-        console.log("yes")
-        const spotifyApi = new SpotifyWebApi();
-        // spotifyApi.setAccessToken(parsedHash);          
+        const spotifyApi = new SpotifyWebApi();        
           
         const details = {
             seed_artists: [],
@@ -45,10 +46,8 @@ const NewPlaylist = (props) => {
             seed_tracks: selectedTracks.map(track => track.id)
         }
 
-        console.log("Details", details)
-
         spotifyApi.getRecommendations(details).then(function (data) {
-            console.log('Top tracks', data);
+            props.setRecommendedTracks(data.tracks);
         },
         function (err) {
             console.error(err);
@@ -57,24 +56,46 @@ const NewPlaylist = (props) => {
     }
 
     const showBtn = () => {
-        console.log("HI ", selectedTracks.length)
         if(selectedTracks.length>0) {
             return <button onClick={getRecommendations}>Get Recommendations</button>
         }
         else return;
     }
 
+    const showDragMessage = () => {
+        if(selectedTracks.length>0) {
+            return null;
+        }
+        else return <p>Drag Tracks Here</p>;
+    }
+
+    const removeTrack = (id, e) => {
+        e.stopPropagation();
+        const newTracks = selectedTracks.filter((track) => track.id !== id);
+        setSelectedTracks(newTracks);
+    }
+    
+    const popupClose = () => {
+        setErrorMsg("");
+    }
+
     return ( 
         <div id="NewPlaylistDiv" onDrop={onDrop} onDragOver={onDragOver}>
-            <h2>Selected Tracks</h2>
-            <ul>
-                {selectedTracks.map(track => (
-                    <li key={track.id}>
-                    <Track track={track} setCurrentPlayingSong={props.setCurrentPlayingSong} />
-                    </li>
-                ))}
-            </ul>
-            {showBtn()}
+            <span>Selected Songs (5 max):</span>
+            <div className="musicList">
+                {showDragMessage()}
+                <ul>
+                    {selectedTracks.map(track => (
+                        <li key={track.id}>
+                        <SelectedTrack track={track} setCurrentPlayingSong={props.setCurrentPlayingSong} removeTrack={removeTrack} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div id="recommendationBtnDiv">
+                {showBtn()}
+            </div>
+        <Popup errorMsg={errorMsg} onClose={popupClose} />
         </div>
      );
 }
