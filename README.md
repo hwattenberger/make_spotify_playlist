@@ -22,26 +22,32 @@
 
 ## 📝 Table of Contents
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
+- [Example](#example)
 - [Usage](#usage)
 - [Built Using](#built_using)
 - [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
-## 🧐 About <a name = "about"></a>
-Write about 1-2 paragraphs describing the purpose of your project.
+## 🧐 Features <a name = "about"></a>
+Select songs from either:
+<ul>
+<li>The top songs that you have been listening to recently</li>
+<li>Search for additional tracks by track name or artist </li></ul>
+Click any song to play <br>
+Drag songs that you want to base your playlist off of to the recommended tracks area (warnings will show if you drag the same song twice) <br>
+Click "Get Recommendations" to recommend songs for a Spotify playlist based off your selected tracks <br>
+Remove songs from the recommended tracks and save a new playlist to Spotify
 
-## 🏁 Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+## 🏁 Example <a name = "getting_started"></a>
+See this image for workflow:
+
 
 ## 🎈 Usage <a name="usage"></a>
 Add notes about how to use the system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [React](https://reactjs.org/) - Front end framework
+- [Spotify APIs](https://developer.spotify.com/) - APIs
 
 ## ✍️ Author <a name = "authors"></a>
 - [@hwattenberger](https://github.com/hwattenberger) - Idea & Initial work
