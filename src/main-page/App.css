@@ -21,9 +21,6 @@ h2 {
 }
 
 #trackPlayingDiv {
-  /* position: fixed; */
-  /* bottom: 0; */
-  /* height: 10vh; */
   background-color: #161515;
   max-width: 240px;
   margin-top: 10px;
@@ -96,7 +93,6 @@ button:hover {
   width: 100px;
   text-align: center;
   color: black;
-  /* cursor: pointer; */
 }
 
 #loginBtn:hover {

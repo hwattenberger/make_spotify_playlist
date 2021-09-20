@@ -6,13 +6,11 @@ const SpotifyPlayerContainer = (props) => {
     const [playerPlaying, setPlayerPlaying] = useState("false");
 
     useEffect(() => {
-        // console.log("trying to play song", props.currentPlayingSong)
         if(props.currentPlayingSong) setPlayerPlaying("true");
       }, [props.currentPlayingSong]);
 
     const onDrop = (e) => {
         const dropUri=e.dataTransfer.getData('uri');
-        // console.log("dropped", dropUri)
         if(dropUri) {
             props.setCurrentPlayingSong(dropUri);
             setPlayerPlaying("true");
