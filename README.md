@@ -23,9 +23,9 @@
 ## 📝 Table of Contents
 - [About](#about)
 - [Example](#example)
-- [Usage](#usage)
+- [Learnings](#learnings)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
+- [TODO](#todos)
 - [Authors](#authors)
 
 ## 🧐 Features <a name = "about"></a>
@@ -38,12 +38,18 @@ Drag songs that you want to base your playlist off of to the recommended tracks 
 Click "Get Recommendations" to recommend songs for a Spotify playlist based off your selected tracks <br>
 Remove songs from the recommended tracks and save a new playlist to Spotify
 
-## 🏁 Example <a name = "getting_started"></a>
+## 🏁 Example <a name = "example"></a>
 See this image for workflow:
+<img width=800px src="https://hilary-wattenberger.netlify.app/images/SpotifyProject2.gif" alt="Sample workflow">
 
+## 🎈 What did I learn? <a name="learnings"></a>
+This was one of my first React projects so I learned loads about API calls, lifting up state, the overall idea of components.  Really fun project because I kept getting to hear different music.
 
-## 🎈 Usage <a name="usage"></a>
-Add notes about how to use the system.
+## 🎈 Todos <a name="todos"></a>
+Things that I would have loved to do:
+- Improve the music player (currently using a library).  Would make my own and improve the look and feel.
+- Release this for use.  Given Spotify restrictions, that isn't currently possible (they don't allow API calls outside of development for projects).
+- Used Redux or some other state manager
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [React](https://reactjs.org/) - Front end framework
